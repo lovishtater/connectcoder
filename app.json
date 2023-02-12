@@ -1,4 +1,7 @@
 {
   "name": "connectcoder",
-  "displayName": "connectcoder"
+  "displayName": "connectcoder",
+  "plugins": [
+    "@react-native-google-signin/google-signin"
+  ]
 }
