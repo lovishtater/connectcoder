@@ -15,7 +15,9 @@ const NotFoundScreen = () => {
       <Text style={styles.title}>This screen doesn't exist.</Text>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("Home", { screen: "Home" })
+          navigation.navigate("Root", {
+            screen: "Home",
+            })
         }
         style={styles.link}
       >

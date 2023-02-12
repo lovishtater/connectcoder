@@ -4,6 +4,7 @@ import {
     Text,
     TouchableOpacity,
     View,
+    ScrollView
 } from "react-native";
 import GoogleAuth from "../components/GoogleAuth";
 

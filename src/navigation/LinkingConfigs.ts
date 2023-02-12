@@ -10,9 +10,7 @@ export default {
   prefixes: ["http://10.0.2.2:8081/"],
   config: {
     screens: {
-      Login: "login",
-      Subscribe: "subscribe",
-      ConfirmSignUp: "confirm_sign-up",
+      Auth : "auth",
       Root: {
         screens: {
           Home: "/",
