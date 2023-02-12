@@ -1,62 +1,66 @@
-import React, {useState} from 'react';
-import {View, Text, Button, ActivityIndicator,
-    Image
-
+import React, {useEffect, useState} from 'react';
+import {View, Text, Button, ActivityIndicator, Image,
+Alert
 } from 'react-native';
 import {StyleSheet} from 'react-native';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-
-GoogleSignin.configure({
-  webClientId:
-    '710186443690-fd8delk8f9376ho6mo7rduo1hog4bkv4.apps.googleusercontent.com',
-  offlineAccess: true,
-  forceCodeForRefreshToken: true,
-});
+import { removeData, storeData } from '../utils/asyncStorage';
 
 function GoogleAuth() {
-  const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const signIn = async () => {
     try {
+      setError(null);
       setLoading(true);
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log('userInfo', userInfo);
-      setUser(userInfo);
-      setLoading(false);
+      if (userInfo) {
+        storeData('token', JSON.stringify(userInfo));
+      }
     } catch (error) {
-      console.log(error);
+      setError(error);
+    } finally {
       setLoading(false);
     }
   };
 
-  const signOut = async () => {
-    try {
-      setLoading(true);
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
+//   const signOut = async () => {
+//     try {
+//       setLoading(true);
+//       await GoogleSignin.revokeAccess();
+//       await GoogleSignin.signOut();
+//         removeData('token');
+//     } catch (error) {
+//         setError(error);
+//     } finally {
+//         setLoading(false);
+//     }
+//     };
 
-      setUser(null);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '710186443690-fd8delk8f9376ho6mo7rduo1hog4bkv4.apps.googleusercontent.com',
+      offlineAccess: true,
+      forceCodeForRefreshToken: true,
+    });
+  }, []);
 
   return (
     <View style={styles.container}>
-        <Text style={styles.title}>Welcome to the Connect Coders</Text>
+      <Text style={styles.title}>Welcome to the Connect Coders</Text>
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
-      ) : user ? (
-        <View>
-          <Text>{user.user.email}</Text>
-          <Button title="Sign Out" onPress={signOut} />
-        </View>
       ) : (
-       <GoogleAuthButton onPress={signIn} />
+        <View style={styles.googleBtn} onTouchEnd={signIn}>
+        <Image
+          source={require('../../assets/google.png')}
+          style={{width: 30, height: 30}}
+        />
+        <Text style={styles.btnText}>Sign in with Google</Text>
+      </View>
       )}
     </View>
   );
@@ -66,9 +70,12 @@ export default GoogleAuth;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    height: '100%',
+    // flex: 1,
+    height: '50%',
     justifyContent: 'center',
+    borderRadius:30,
+    borderWidth: 3,
+    borderColor:"#000",
     alignItems: 'center',
   },
   googleBtn: {
@@ -79,36 +86,19 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     shadowColor: '#000',
     margin: 10,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.5,
     shadowRadius: 2,
     elevation: 1,
-},
-btnText: {
+  },
+  btnText: {
     color: '#000',
     fontSize: 16,
     marginLeft: 10,
-},
-title: {
+  },
+  title: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: '#000',
-},
+  },
 });
-
-
-const GoogleAuthButton = ({onPress}) => {
-    return (
-        <View style={styles.googleBtn} onTouchEnd={onPress}>
-        <Image
-            source={require('../../assets/google.png')}
-            style={{width: 30, height: 30}}
-        />
-        <Text style={styles.btnText}>Sign in with Google</Text>
-        </View>
-    );
-};
-
-
-    
-

@@ -6,10 +6,10 @@ import {
     
 } from "react-native";
 
-const HomeScreen = () => {
+const FeedScreen = () => {
     return (
         <View style={styles.container}>
-            <Text>Home</Text>
+            <Text>Feed</Text>
         </View>
     );
 }
@@ -17,12 +17,11 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff3",
-        height: "100%",
+        backgroundColor:"#bb3631",
         alignItems: "center",
         justifyContent: "center",
     },
 });
 
-export default HomeScreen;
+export default FeedScreen;
 

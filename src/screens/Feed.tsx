@@ -17,6 +17,7 @@ const FeedScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor:"#dc3",
         alignItems: "center",
         justifyContent: "center",
     },

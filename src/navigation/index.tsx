@@ -9,11 +9,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { RootStackParamList } from "../types/types";
 import MainTabNavigator from "./MainTabNavigator";
 import NotFoundScreen from "../screens/NotFound";
-import HomeScreen from "../screens/Home";
+import ContestScreen from "../screens/Contest";
 import AuthScreen from "../screens/Auth";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { INavigationProps } from "../types/interfaces";
 // import DrawerMenu from "./DrawerMenu";
+
+
 
 const Navigation = (props: INavigationProps) => {
   const { colorScheme } = props;
@@ -21,7 +23,7 @@ const Navigation = (props: INavigationProps) => {
   return (
     <NavigationContainer
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-    //   linking={LinkingConfiguration}
+      linking={LinkingConfiguration}
     >
       <RootNavigator />
     </NavigationContainer>
@@ -31,6 +33,21 @@ const Navigation = (props: INavigationProps) => {
 const Stack = createStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
+    const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(true);
+
+    const checkAuth = async () => {
+        const token = await AsyncStorage.getItem('token');
+        if (token) {
+            setIsAuthenticated(true);
+        }
+        setIsLoading(false);
+    }
+
+    React.useEffect(() => {
+        checkAuth();
+    }, []);
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -38,9 +55,17 @@ const RootNavigator = () => {
       }}
       initialRouteName={"Home"}
     >
-        {/* <Stack.Screen name={"Home"} component={MainTabNavigator} />
-        <Stack.Screen name={"NotFound"} component={NotFoundScreen} /> */}
+        {isAuthenticated ? (
+            <>
+        <Stack.Screen name={"Home"} component={MainTabNavigator} />
+        <Stack.Screen name={"NotFound"} component={NotFoundScreen} />
+        {/* <Stack.Screen name={"NotFound"} component={NotFoundScreen} /> */}
+            </>
+        ) : (
+            <>
         <Stack.Screen name={"Auth"} component={AuthScreen} />
+            </>
+        )}
     </Stack.Navigator>
   );
 };
