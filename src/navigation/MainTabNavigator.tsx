@@ -4,21 +4,15 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import HomeScreen from '../screens/Contest';
 import FeedScreen from '../screens/Feed';
 import ProfileScreen from '../screens/Profile';
-import { useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../types/types';
+import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '../types/types';
 
 const MainTab = createMaterialBottomTabNavigator();
 
 const MainTabNavigator = () => {
   const user = useSelector((state: any) => state.user);
   const navigation = useNavigation();
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     navigation.navigate<RootStackParamList>('Auth');
-  //   }
-  // }, [user]);
   return (
     <MainTab.Navigator
       initialRouteName={'Home'}
