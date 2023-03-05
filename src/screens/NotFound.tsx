@@ -16,12 +16,12 @@ const NotFoundScreen = () => {
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("Root", {
-            screen: "Home",
+            screen: "Feed",
             })
         }
         style={styles.link}
       >
-        <Text style={styles.linkText}>Go to home screen!</Text>
+        <Text style={styles.linkText}>Go to Feed screen!</Text>
       </TouchableOpacity>
     </View>
   );

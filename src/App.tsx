@@ -9,14 +9,20 @@
 import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {useColorScheme} from 'react-native';
-import Navigation from './src/navigation';
-import Colors from './src/constants/Colors';
+import Navigation from './navigation';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import store from './store'
+import {persistStore} from 'redux-persist';
 
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react';
+let persistor = persistStore(store);
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
     <SafeAreaProvider
       initialMetrics={{
         frame: {x: 0, y: 0, width: 0, height: 0},
@@ -24,6 +30,8 @@ const App: () => Node = () => {
       }}>
       <Navigation />
     </SafeAreaProvider>
+    </PersistGate>
+    </Provider>
   );
 };
 

@@ -7,13 +7,16 @@
 import { Linking } from "react-native";
 
 export default {
-  prefixes: ["http://10.0.2.2:8081/"],
+  prefixes: ["myapp://app", "https://myapp.com/app"],
   config: {
     screens: {
-      Auth : "auth",
       Root: {
         screens: {
-          Home: "/",
+          TabOne: {
+            screens: {
+              TabOneScreen: "one",
+            },
+          },
           TabTwo: {
             screens: {
               TabTwoScreen: "two",
@@ -21,7 +24,7 @@ export default {
           },
         },
       },
-      NotFound: '*',
+      NotFound: "*",
     },
   },
 };
