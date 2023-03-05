@@ -6,8 +6,6 @@ import {Button} from 'react-native-paper';
 const FeedScreen = () => {
   const [counter, setCounter] = useState(0);
 
-
-
   return (
     <View style={styles.container}>
       <Text style={{color: 'white', fontSize: 30}}>{counter}</Text>

@@ -14,7 +14,7 @@ import AuthScreen from '../screens/Auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {INavigationProps} from '../types/interfaces';
 import {useSelector} from 'react-redux';
-import { getData } from '../utils/asyncStorage';
+import {getData} from '../utils/asyncStorage';
 // import DrawerMenu from "./DrawerMenu";
 
 const Navigation = (props: INavigationProps) => {
@@ -24,9 +24,8 @@ const Navigation = (props: INavigationProps) => {
   return (
     <NavigationContainer
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-      linking={LinkingConfiguration as any}
-      >
-        {user.idToken ? <RootNavigator /> : <AuthNavigator />}
+      linking={LinkingConfiguration as any}>
+      {user.idToken ? <RootNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };
@@ -40,7 +39,7 @@ const RootNavigator = () => {
         headerShown: false,
       }}
       initialRouteName={'Root'}>
-          <Stack.Screen name={'Root'} component={MainTabNavigator} />
+      <Stack.Screen name={'Root'} component={MainTabNavigator} />
     </Stack.Navigator>
   );
 };

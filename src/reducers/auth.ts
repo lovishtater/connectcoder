@@ -1,9 +1,9 @@
-import { isSignedIn } from '../actions/auth';
+import {isSignedIn} from '../actions/auth';
 import {IS_AUTHTHENTICATED} from '../constants/AuthConstants';
 
 export interface AuthState {
-    user: any;
-    error: string;
+  user: any;
+  error: string;
 }
 
 const initialState: AuthState = {
@@ -11,16 +11,14 @@ const initialState: AuthState = {
   error: '',
 };
 
-
 export default function authReducer(state = initialState, action: any) {
-    switch (action.type) {
-        case IS_AUTHTHENTICATED:
-            return {
-                ...state,
-                user: action.payload,
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case IS_AUTHTHENTICATED:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    default:
+      return state;
+  }
 }
-

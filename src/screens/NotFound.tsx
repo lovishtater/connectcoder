@@ -1,11 +1,6 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const NotFoundScreen = () => {
   const navigation = useNavigation();
@@ -15,12 +10,11 @@ const NotFoundScreen = () => {
       <Text style={styles.title}>This screen doesn't exist.</Text>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("Root", {
-            screen: "Feed",
-            })
+          navigation.navigate('Root', {
+            screen: 'Feed',
+          })
         }
-        style={styles.link}
-      >
+        style={styles.link}>
         <Text style={styles.linkText}>Go to Feed screen!</Text>
       </TouchableOpacity>
     </View>
@@ -30,14 +24,14 @@ const NotFoundScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 20,
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   link: {
     marginTop: 15,
@@ -45,7 +39,7 @@ const styles = StyleSheet.create({
   },
   linkText: {
     fontSize: 14,
-    color: "#2e78b7",
+    color: '#2e78b7',
   },
 });
 

@@ -1,5 +1,5 @@
-import { ColorSchemeName } from "react-native";
+import {ColorSchemeName} from 'react-native';
 
 export interface INavigationProps {
-    colorScheme?: ColorSchemeName;
-  }
+  colorScheme?: ColorSchemeName;
+}

@@ -1,7 +1,5 @@
 {
   "name": "connectcoder",
   "displayName": "connectcoder",
-  "plugins": [
-    "@react-native-google-signin/google-signin"
-  ]
+  "plugins": ["@react-native-google-signin/google-signin"]
 }
