@@ -11,6 +11,7 @@ import {
 import MyButton from './DropDownBtn';
 import {IContest} from '../types/types';
 import {convertDuration} from '../utils/common';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const icons = {
   AtCoder: require('../assets/atcoder.png'),
@@ -31,25 +32,30 @@ const ContestCard = ({item}: {item: IContest}) => {
   return (
     <View style={styles.card}>
       <View style={styles.cardInfo}>
-        <View style={styles.cardImage}>
+        <View style={styles.cardImageSection}>
           <Image
             source={icons[item.site] || icons.default}
             style={styles.cardImage}
           />
         </View>
         <View style={styles.cardContent}>
-          <Text style={styles.cardHeading}>{item.name}</Text>
+          <Text
+            style={styles.cardHeading}
+            onPress={() => Linking.openURL(item.url)}>
+            {item.name}
+            <MaterialCommunityIcons
+              name="open-in-new"
+              size={15}
+              color={COLORS.primary}
+              style={{marginLeft: 5}}
+            />
+          </Text>
           <Text style={styles.cardText}> {item.site}</Text>
           <Text style={styles.cardText}>{convertDuration(item.duration)}</Text>
         </View>
       </View>
 
       <View style={styles.cardActions}>
-        <TouchableOpacity
-          style={styles.cardButton}
-          onPress={() => Linking.openURL(item.url)}>
-          <Text style={styles.cardButtonText}>Open</Text>
-        </TouchableOpacity>
         <MyButton
           name="Alarm"
           size={20}
@@ -73,14 +79,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginVertical: 10,
     flexDirection: 'column',
-    alignItems: 'center',
-    // justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
     padding: 10,
     zIndex: 1,
   },
-  cardImage: {
+  cardImageSection: {
     width: 50,
     height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cardImage: {
+    width: "80%",
+    height: "80%",
+    resizeMode: 'contain',
   },
   cardContent: {
     flexDirection: 'column',
@@ -94,8 +107,8 @@ const styles = StyleSheet.create({
   },
   cardActions: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
   },
   cardHeading: {
     color: COLORS.text.primary,
@@ -117,7 +130,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   cardButtonText: {
-    color: COLORS.textLight,
+    color: COLORS.text.inverse,
     fontSize: 14,
     fontWeight: 'bold',
   },

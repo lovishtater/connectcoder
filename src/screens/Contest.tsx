@@ -32,9 +32,6 @@ const HomeScreen = () => {
   }, []);
   const [refreshing, setRefreshing] = React.useState(false);
   const [data, setData] = React.useState([
-    {
-      name: 'Johns Doe',
-    },
   ]);
   const [error, setError] = React.useState(null);
   const [organisation, setOrganisation] = React.useState([]);

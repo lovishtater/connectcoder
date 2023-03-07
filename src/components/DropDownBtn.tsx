@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     backgroundColor: COLORS.button.filled.secondary.background,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
   },
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   },
   dropdownButton: {
     backgroundColor: COLORS.button.filled.primary.background,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
     borderLeftWidth: 1,
