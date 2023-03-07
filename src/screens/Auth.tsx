@@ -82,7 +82,7 @@ const AuthScreen = () => {
       ) : (
         <View style={styles.googleBtn} onTouchEnd={() => onGoogleButtonPress()}>
           <Image
-            source={require('../../assets/google.png')}
+            source={require('../assets/google.png')}
             style={{width: 30, height: 30}}
           />
           <Text style={styles.btnText}>Sign in with Google</Text>

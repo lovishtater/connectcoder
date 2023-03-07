@@ -7,3 +7,14 @@ export type RootStackParamList = {
   Contest: undefined;
   '*': undefined;
 };
+
+export interface IContest {
+  name: string;
+  url: string;
+  start_time: string;
+  end_time: string;
+  duration: number;
+  site: string;
+  in_24_hours: string;
+  status: string;
+}

@@ -1,64 +1,50 @@
 export const COLORS = {
-  gradientForm: '#A376F1',
-  primary: '#7d5fff',
-  white: '#FFFFFF',
-  // dark: '#444',
-  bgColor: '#82ccdd',
-  warning: '#f0d500',
-  danger: '#FF0D0E',
-  gray: '#666666',
-  grayLight: '#ccc',
-  black: '#0a0a0a',
-  dark: {
-    background: '#000',
-    text: '#FFF',
+  primary: '#6A1B9A',
+  secondary: '#BA68C8',
+  background: '#F3E5F5',
+  text: {
+    dark: '#000000',
+    primary: '#333333',
+    secondary: '#757575',
+    disabled: '#BDBDBD',
+    inverse: '#FFFFFF',
   },
-  light: {
-    background: '#FFF',
-    text: '#000',
-    primary: '#1292B4',
-    secondary: '#0f60f5',
-    third: '#3e2465',
-    fourth: '#694fad',
-    white: '#FFF',
-    lighter: '#F3F3F3',
-    light: '#DAE1E7',
-    dark: '#444',
-    darker: '#222',
-    black: '#000',
-    tint: '#010110',
+  modal: {
+    background: '#FFFFFF',
+    shadow: 'rgba(0,0,0,0.5)',
   },
-  default: {
-    blue: {
-      dark: '#0754ce',
-      primary: '#1f70ee',
-      light: '#327df8',
+  view: {
+    background: '#FFFFFF',
+    border: '#E0E0E0',
+  },
+  button: {
+    filled: {
+      primary: {
+        background: '#6A1B9A',
+        text: '#FFFFFF',
+      },
+      secondary: {
+        background: '#BA68C8',
+        text: '#FFFFFF',
+      },
     },
-    purple: {
-      light: '#694fad',
-      dark: '#3e2465',
-    },
-    red: {
-      dark: '#ff2e05',
-      primary: '#ff4714',
-      light: '#ff4714',
-    },
-    grey: {
-      light: '#a9a9a9',
-      primary: '#737373',
-      dark: '#444',
-    },
-    white: {
-      primary: '#f8f8f8',
-      light: '#FFF',
-      dark: '#f0f0f0',
-    },
-    black: {
-      primary: '#000',
-      tint: '#010110',
-    },
-    yellow: {
-      gold: '#FFD700',
+    outline: {
+      background: '#FFFFFF',
+      border: '#6A1B9A',
+      text: '#6A1B9A',
     },
   },
+  chip: {
+    background: '#EDE7F6',
+    text: '#6A1B9A',
+  },
+  input: {
+    background: '#FFFFFF',
+    border: '#E0E0E0',
+    text: '#333333',
+    placeholder: '#BDBDBD',
+  },
+  success: '#43A047',
+  accent: '#FFC107',
+  error: '#E53935',
 };

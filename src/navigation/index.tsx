@@ -20,12 +20,12 @@ import {getData} from '../utils/asyncStorage';
 const Navigation = (props: INavigationProps) => {
   const {colorScheme} = props;
   const user = useSelector((state: any) => state.auth.user);
-  console.log('user', Object.keys(user));
+  // console.log('user', Object.keys(user));
   return (
     <NavigationContainer
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
       linking={LinkingConfiguration as any}>
-      {user.idToken ? <RootNavigator /> : <AuthNavigator />}
+      {user?.idToken ? <RootNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };

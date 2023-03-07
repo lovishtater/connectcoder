@@ -7,6 +7,7 @@ import {RootState} from '../store';
 import {signout} from '../actions/auth';
 import Snackbar from 'react-native-snackbar';
 import {useAppDispatch} from '../hooks';
+import {Appbar} from 'react-native-paper';
 
 const FeedScreen = ({navigation}) => {
   const {user} = useSelector((state: RootState) => state.auth);
@@ -33,8 +34,9 @@ const FeedScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Appbar style={{backgroundColor: '#111111', width: '100%'}}></Appbar>
       <Button title="Sign Out" onPress={() => handleSignout()} />
+      <Text>Profile</Text>
     </View>
   );
 };
