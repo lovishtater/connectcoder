@@ -31,8 +31,7 @@ const HomeScreen = () => {
     loadData();
   }, []);
   const [refreshing, setRefreshing] = React.useState(false);
-  const [data, setData] = React.useState([
-  ]);
+  const [data, setData] = React.useState([]);
   const [error, setError] = React.useState(null);
   const [organisation, setOrganisation] = React.useState([]);
 

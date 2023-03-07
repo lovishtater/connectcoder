@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cardImage: {
-    width: "80%",
-    height: "80%",
+    width: '80%',
+    height: '80%',
     resizeMode: 'contain',
   },
   cardContent: {
